@@ -421,68 +421,61 @@
 </main>
 
 <script>
-  const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.volkantastemir.ehliyetmobil';
-  const APP_STORE_URL  = 'https://apps.apple.com/app/id6759098085';
+  const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.YOUR_APP_ID';
+  const APP_STORE_URL  = 'https://apps.apple.com/app/idYOUR_APP_ID';
+  const PLAY_INTENT    = 'intent://play.google.com/store/apps/details?id=com.YOUR_APP_ID#Intent;scheme=https;package=com.android.vending;end';
+  const APP_STORE_DEEP = 'itms-apps://apps.apple.com/app/idYOUR_APP_ID';
 
-  const ua         = navigator.userAgent || '';
-  const isAndroid  = /android/i.test(ua);
-  const isIOS      = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  const isTikTok   = /musical_ly|TikTok|BytedanceWebview|ByteLocale/i.test(ua);
-  const isInstagram = /Instagram/i.test(ua);
+  const ua          = navigator.userAgent || '';
+  const isAndroid   = /android/i.test(ua);
+  const isIOS       = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const isTikTok    = /musical_ly|TikTok|BytedanceWebview|ByteLocale/i.test(ua);
   const isFacebook  = /FBAN|FBAV/i.test(ua);
 
-  const btnAndroid = document.getElementById('btnAndroid');
-  const btnIos     = document.getElementById('btnIos');
-  const autoBadge  = document.getElementById('autoBadge');
-  const autoText   = document.getElementById('autoText');
-  const countdownEl= document.getElementById('countdown');
-  const manualLink = document.getElementById('manualLink');
+  const btnAndroid  = document.getElementById('btnAndroid');
+  const btnIos      = document.getElementById('btnIos');
+  const autoBadge   = document.getElementById('autoBadge');
+  const autoText    = document.getElementById('autoText');
+  const countdownEl = document.getElementById('countdown');
+  const manualLink  = document.getElementById('manualLink');
 
-  // Android için intent:// scheme (in-app browser'larda daha güvenilir)
-  const PLAY_INTENT = 'intent://play.google.com/store/apps/details?id=com.volkantastemir.ehliyetmobil#Intent;scheme=https;package=com.android.vending;end';
-  // iOS için itms-apps:// scheme
-  const APP_STORE_DEEP = 'itms-apps://apps.apple.com/app/id6759098085';
+  // Butonlar her zaman kendi mağazalarına gitsin – cihaza göre override YOK
+  btnAndroid.href = (isTikTok || isFacebook) ? PLAY_INTENT : PLAY_STORE_URL;
+  btnIos.href     = (isTikTok || isFacebook) ? APP_STORE_DEEP : APP_STORE_URL;
 
+  // TikTok: otomatik yönlendirme yok, dış tarayıcı uyarısı göster
+  if (isTikTok) {
+    autoBadge.classList.add('show');
+    autoBadge.style.background   = 'rgba(255,180,0,.12)';
+    autoBadge.style.borderColor  = 'rgba(255,160,0,.35)';
+    autoBadge.style.color        = '#8a5e00';
+    countdownEl.style.display    = 'none';
+    autoText.innerHTML = isIOS
+      ? '⚠️ Sağ alt köşedeki <strong>Safari\'de Aç</strong> seçeneğine dokunun, ardından butona tıklayın.'
+      : '⚠️ Sağ üstteki <strong>⋮ menüsünden</strong> "Tarayıcıda Aç" seçeneğine dokunun.';
+    manualLink.href = isIOS ? APP_STORE_URL : PLAY_STORE_URL;
+    return; // otomatik yönlendirme yapma
+  }
+
+  // Normal otomatik yönlendirme
   let targetUrl  = null;
   let targetName = '';
 
   if (isAndroid) {
-    const url = (isTikTok || isFacebook) ? PLAY_INTENT : PLAY_STORE_URL;
-    btnAndroid.href = url;
-    btnIos.href     = PLAY_STORE_URL;
-    manualLink.href = PLAY_STORE_URL;
-    targetUrl  = url;
+    targetUrl  = PLAY_STORE_URL;
     targetName = 'Google Play';
     btnAndroid.classList.add('detected');
+    manualLink.href = PLAY_STORE_URL;
   } else if (isIOS) {
-    const url = (isTikTok || isFacebook) ? APP_STORE_DEEP : APP_STORE_URL;
-    btnIos.href     = url;
-    btnAndroid.href = APP_STORE_URL;
-    manualLink.href = APP_STORE_URL;
-    targetUrl  = url;
+    targetUrl  = APP_STORE_URL;
     targetName = 'App Store';
     btnIos.classList.add('detected');
+    manualLink.href = APP_STORE_URL;
   } else {
-    btnAndroid.href = PLAY_STORE_URL;
-    btnIos.href     = APP_STORE_URL;
     manualLink.href = PLAY_STORE_URL;
   }
 
-  // TikTok'ta otomatik yönlendirme yerine uyarı göster
-  if (isTikTok && targetUrl) {
-    autoBadge.classList.add('show');
-    autoBadge.style.background    = 'rgba(255,180,0,.12)';
-    autoBadge.style.borderColor   = 'rgba(255,160,0,.35)';
-    autoBadge.style.color         = '#8a5e00';
-    countdownEl.style.background  = '#f59e0b';
-    countdownEl.style.fontSize    = '.65rem';
-    countdownEl.style.width       = 'auto';
-    countdownEl.style.padding     = '0 8px';
-    countdownEl.style.borderRadius= '8px';
-    autoText.textContent = 'TikTok tarayıcısında otomatik yönlendirme kısıtlı. Lütfen aşağıdaki butona tıklayın.';
-    countdownEl.textContent = '⬇';
-  } else if (targetUrl) {
-    // Normal otomatik yönlendirme (Instagram dahil)
+  if (targetUrl) {
     autoBadge.classList.add('show');
     autoText.textContent = targetName + "'e yönlendiriliyorsunuz";
 
