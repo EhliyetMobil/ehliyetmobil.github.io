@@ -580,8 +580,6 @@
 
       var PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.volkantastemir.ehliyetmobil';
       var APP_STORE_URL = 'https://apps.apple.com/app/id6759098085';
-      var PLAY_INTENT = 'intent://play.google.com/store/apps/details?id=com.volkantastemir.ehliyetmobil#Intent;scheme=https;package=com.android.vending;end';
-      var APP_STORE_DEEP = 'itms-apps://apps.apple.com/app/id6759098085';
 
       var ua = navigator.userAgent || '';
       var isAndroid = /android/i.test(ua);
@@ -596,9 +594,9 @@
       var countdownEl = document.getElementById('countdown');
       var manualLink = document.getElementById('manualLink');
 
-      // Her buton kendi mağazasına gider, cihaza göre override YOK
-      btnAndroid.href = (isTikTok || isFacebook) ? PLAY_INTENT : PLAY_STORE_URL;
-      btnIos.href = (isTikTok || isFacebook) ? APP_STORE_DEEP : APP_STORE_URL;
+      // Her buton kendi mağazasına gider, her zaman düz URL kullan
+      btnAndroid.href = PLAY_STORE_URL;
+      btnIos.href = APP_STORE_URL;
 
       // ── TikTok: dış tarayıcı uyarısı göster, otomatik yönlendirme yapma ──
       if (isTikTok) {
