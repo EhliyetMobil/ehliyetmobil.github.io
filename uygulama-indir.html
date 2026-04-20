@@ -421,46 +421,68 @@
 </main>
 
 <script>
-  // ─── Store URLs – replace with your actual URLs ───────────────────────────
-  const PLAY_STORE_URL  = 'https://play.google.com/store/apps/details?id=com.volkantastemir.ehliyetmobil&pli=1';
-  const APP_STORE_URL   = 'itms-apps://apps.apple.com/us/app/ehliyet-mobil/id6759098085';
-  // ─────────────────────────────────────────────────────────────────────────
+  const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.volkantastemir.ehliyetmobil';
+  const APP_STORE_URL  = 'https://apps.apple.com/app/id6759098085';
 
-  const ua = navigator.userAgent || '';
-  const isAndroid = /android/i.test(ua);
-  const isIOS     = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const ua         = navigator.userAgent || '';
+  const isAndroid  = /android/i.test(ua);
+  const isIOS      = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const isTikTok   = /musical_ly|TikTok|BytedanceWebview|ByteLocale/i.test(ua);
+  const isInstagram = /Instagram/i.test(ua);
+  const isFacebook  = /FBAN|FBAV/i.test(ua);
 
-  const btnAndroid  = document.getElementById('btnAndroid');
-  const btnIos      = document.getElementById('btnIos');
-  const autoBadge   = document.getElementById('autoBadge');
-  const autoText    = document.getElementById('autoText');
-  const countdownEl = document.getElementById('countdown');
-  const manualLink  = document.getElementById('manualLink');
+  const btnAndroid = document.getElementById('btnAndroid');
+  const btnIos     = document.getElementById('btnIos');
+  const autoBadge  = document.getElementById('autoBadge');
+  const autoText   = document.getElementById('autoText');
+  const countdownEl= document.getElementById('countdown');
+  const manualLink = document.getElementById('manualLink');
 
-  // Set real hrefs
-  btnAndroid.href = PLAY_STORE_URL;
-  btnIos.href     = APP_STORE_URL;
+  // Android için intent:// scheme (in-app browser'larda daha güvenilir)
+  const PLAY_INTENT = 'intent://play.google.com/store/apps/details?id=com.YOUR_APP_ID#Intent;scheme=https;package=com.android.vending;end';
+  // iOS için itms-apps:// scheme
+  const APP_STORE_DEEP = 'itms-apps://apps.apple.com/app/idYOUR_APP_ID';
 
   let targetUrl  = null;
   let targetName = '';
 
   if (isAndroid) {
-    targetUrl  = PLAY_STORE_URL;
+    const url = (isTikTok || isFacebook) ? PLAY_INTENT : PLAY_STORE_URL;
+    btnAndroid.href = url;
+    btnIos.href     = PLAY_STORE_URL;
+    manualLink.href = PLAY_STORE_URL;
+    targetUrl  = url;
     targetName = 'Google Play';
     btnAndroid.classList.add('detected');
-    manualLink.href = PLAY_STORE_URL;
   } else if (isIOS) {
-    targetUrl  = APP_STORE_URL;
+    const url = (isTikTok || isFacebook) ? APP_STORE_DEEP : APP_STORE_URL;
+    btnIos.href     = url;
+    btnAndroid.href = APP_STORE_URL;
+    manualLink.href = APP_STORE_URL;
+    targetUrl  = url;
     targetName = 'App Store';
     btnIos.classList.add('detected');
-    manualLink.href = APP_STORE_URL;
   } else {
-    // Desktop – show both, no auto-redirect
+    btnAndroid.href = PLAY_STORE_URL;
+    btnIos.href     = APP_STORE_URL;
     manualLink.href = PLAY_STORE_URL;
   }
 
-  // Auto-redirect countdown (only on mobile)
-  if (targetUrl) {
+  // TikTok'ta otomatik yönlendirme yerine uyarı göster
+  if (isTikTok && targetUrl) {
+    autoBadge.classList.add('show');
+    autoBadge.style.background    = 'rgba(255,180,0,.12)';
+    autoBadge.style.borderColor   = 'rgba(255,160,0,.35)';
+    autoBadge.style.color         = '#8a5e00';
+    countdownEl.style.background  = '#f59e0b';
+    countdownEl.style.fontSize    = '.65rem';
+    countdownEl.style.width       = 'auto';
+    countdownEl.style.padding     = '0 8px';
+    countdownEl.style.borderRadius= '8px';
+    autoText.textContent = 'TikTok tarayıcısında otomatik yönlendirme kısıtlı. Lütfen aşağıdaki butona tıklayın.';
+    countdownEl.textContent = '⬇';
+  } else if (targetUrl) {
+    // Normal otomatik yönlendirme (Instagram dahil)
     autoBadge.classList.add('show');
     autoText.textContent = targetName + "'e yönlendiriliyorsunuz";
 
@@ -474,7 +496,6 @@
       }
     }, 1000);
 
-    // Allow manual tap to cancel countdown & stay on page
     [btnAndroid, btnIos].forEach(btn => {
       btn.addEventListener('click', () => clearInterval(tick));
     });
