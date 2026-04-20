@@ -1,32 +1,42 @@
 <!DOCTYPE html>
 <html lang="tr">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ehliyet Mobil – Uygulamayı İndir</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Sora:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Sora:wght@300;400;600;700&display=swap"
+    rel="stylesheet" />
   <style>
     :root {
-      --primary:       #29449B;
+      --primary: #29449B;
       --primary-light: #3A5BC7;
-      --primary-dark:  #1A2E6E;
-      --accent:        #4F7FFF;
-      --accent2:       #A8C0FF;
-      --sky:           #E8EEFF;
-      --white:         #FFFFFF;
-      --text-main:     #1A2340;
-      --text-muted:    #5A6A8A;
-      --android:       #34A853;
-      --ios:           #1C1C1E;
-      --shadow-card:   0 24px 64px rgba(41,68,155,0.18);
-      --radius:        24px;
+      --primary-dark: #1A2E6E;
+      --accent: #4F7FFF;
+      --accent2: #A8C0FF;
+      --sky: #E8EEFF;
+      --white: #FFFFFF;
+      --text-main: #1A2340;
+      --text-muted: #5A6A8A;
+      --android: #34A853;
+      --ios: #1C1C1E;
+      --shadow-card: 0 24px 64px rgba(41, 68, 155, 0.18);
+      --radius: 24px;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html, body {
+    html,
+    body {
       min-height: 100%;
       font-family: 'Sora', sans-serif;
       background: #EEF2FF;
@@ -39,9 +49,9 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 60% at 20% -10%, rgba(79,127,255,.25) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 90% 110%, rgba(41,68,155,.20) 0%, transparent 55%),
-        radial-gradient(ellipse 40% 40% at 60% 50%,  rgba(168,192,255,.12) 0%, transparent 70%),
+        radial-gradient(ellipse 80% 60% at 20% -10%, rgba(79, 127, 255, .25) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 90% 110%, rgba(41, 68, 155, .20) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 60% 50%, rgba(168, 192, 255, .12) 0%, transparent 70%),
         #E8EEFF;
       z-index: -2;
     }
@@ -50,8 +60,8 @@
       content: '';
       position: fixed;
       inset: 0;
-      background-image: linear-gradient(rgba(41,68,155,.06) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(41,68,155,.06) 1px, transparent 1px);
+      background-image: linear-gradient(rgba(41, 68, 155, .06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(41, 68, 155, .06) 1px, transparent 1px);
       background-size: 40px 40px;
       z-index: -1;
     }
@@ -69,20 +79,27 @@
     .card {
       width: 100%;
       max-width: 440px;
-      background: rgba(255,255,255,0.72);
+      background: rgba(255, 255, 255, 0.72);
       backdrop-filter: blur(28px) saturate(160%);
       -webkit-backdrop-filter: blur(28px) saturate(160%);
-      border: 1.5px solid rgba(255,255,255,0.7);
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
       border-radius: var(--radius);
       box-shadow: var(--shadow-card);
       padding: 2.5rem 2rem 2rem;
       text-align: center;
-      animation: slideUp .6s cubic-bezier(.22,1,.36,1) both;
+      animation: slideUp .6s cubic-bezier(.22, 1, .36, 1) both;
     }
 
     @keyframes slideUp {
-      from { opacity: 0; transform: translateY(32px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(32px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .icon-wrap {
@@ -90,21 +107,34 @@
       height: 96px;
       border-radius: 22px;
       background: linear-gradient(145deg, var(--primary-light), var(--primary-dark));
-      box-shadow: 0 12px 36px rgba(41,68,155,.40), inset 0 1px 0 rgba(255,255,255,.22);
+      box-shadow: 0 12px 36px rgba(41, 68, 155, .40), inset 0 1px 0 rgba(255, 255, 255, .22);
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 1.25rem;
-      animation: popIn .5s .2s cubic-bezier(.34,1.56,.64,1) both;
+      animation: popIn .5s .2s cubic-bezier(.34, 1.56, .64, 1) both;
       overflow: hidden;
     }
 
     @keyframes popIn {
-      from { opacity: 0; transform: scale(.65); }
-      to   { opacity: 1; transform: scale(1); }
+      from {
+        opacity: 0;
+        transform: scale(.65);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
-    .icon-wrap img { width: 96px; height: 96px; border-radius: 22px; object-fit: cover; display: block; }
+    .icon-wrap img {
+      width: 96px;
+      height: 96px;
+      border-radius: 22px;
+      object-fit: cover;
+      display: block;
+    }
 
     .badge {
       display: inline-flex;
@@ -116,21 +146,33 @@
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--primary);
-      background: rgba(41,68,155,.1);
-      border: 1px solid rgba(41,68,155,.18);
+      background: rgba(41, 68, 155, .1);
+      border: 1px solid rgba(41, 68, 155, .18);
       padding: .3rem .8rem;
       border-radius: 999px;
       margin-bottom: .9rem;
     }
+
     .badge-dot {
-      width: 7px; height: 7px;
+      width: 7px;
+      height: 7px;
       background: var(--accent);
       border-radius: 50%;
       animation: pulse 1.8s ease-in-out infinite;
     }
+
     @keyframes pulse {
-      0%,100% { opacity:1; transform:scale(1); }
-      50%      { opacity:.5; transform:scale(.7); }
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: .5;
+        transform: scale(.7);
+      }
     }
 
     .app-name {
@@ -142,6 +184,7 @@
       margin-bottom: .4rem;
       letter-spacing: -.02em;
     }
+
     .tagline {
       font-size: .92rem;
       color: var(--text-muted);
@@ -165,6 +208,7 @@
       flex-wrap: wrap;
       margin-bottom: 1.75rem;
     }
+
     .trust-pill {
       display: flex;
       align-items: center;
@@ -172,15 +216,22 @@
       font-size: .75rem;
       font-weight: 600;
       color: var(--primary);
-      background: rgba(41,68,155,.07);
-      border: 1px solid rgba(41,68,155,.14);
+      background: rgba(41, 68, 155, .07);
+      border: 1px solid rgba(41, 68, 155, .14);
       padding: .3rem .75rem;
       border-radius: 999px;
       white-space: nowrap;
     }
-    .trust-pill svg { width:14px; height:14px; flex-shrink:0; }
 
-    .store-section { width: 100%; }
+    .trust-pill svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
+
+    .store-section {
+      width: 100%;
+    }
 
     .store-btn {
       display: flex;
@@ -199,43 +250,75 @@
       position: relative;
       overflow: hidden;
     }
+
     .store-btn::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(160deg, rgba(255,255,255,.18) 0%, transparent 60%);
+      background: linear-gradient(160deg, rgba(255, 255, 255, .18) 0%, transparent 60%);
       pointer-events: none;
     }
-    .store-btn:active { transform: scale(.97); }
-    .store-btn:hover  { transform: translateY(-2px); }
+
+    .store-btn:active {
+      transform: scale(.97);
+    }
+
+    .store-btn:hover {
+      transform: translateY(-2px);
+    }
 
     .btn-android {
       background: linear-gradient(135deg, #2A9D5C 0%, #34A853 100%);
-      box-shadow: 0 10px 32px rgba(52,168,83,.32);
+      box-shadow: 0 10px 32px rgba(52, 168, 83, .32);
       color: #fff;
     }
-    .btn-android:hover { box-shadow: 0 16px 40px rgba(52,168,83,.42); }
+
+    .btn-android:hover {
+      box-shadow: 0 16px 40px rgba(52, 168, 83, .42);
+    }
 
     .btn-ios {
       background: linear-gradient(135deg, #1C1C1E 0%, #3A3A3C 100%);
-      box-shadow: 0 10px 32px rgba(0,0,0,.22);
+      box-shadow: 0 10px 32px rgba(0, 0, 0, .22);
       color: #fff;
     }
-    .btn-ios:hover { box-shadow: 0 16px 40px rgba(0,0,0,.30); }
 
-    .btn-icon { width: 36px; height: 36px; flex-shrink: 0; }
+    .btn-ios:hover {
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .30);
+    }
 
-    .btn-text { text-align: left; }
-    .btn-label { font-size: .68rem; font-weight: 400; opacity: .82; letter-spacing: .04em; display: block; }
-    .btn-store { font-size: 1.05rem; font-weight: 700; display: block; letter-spacing: -.01em; }
+    .btn-icon {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+
+    .btn-text {
+      text-align: left;
+    }
+
+    .btn-label {
+      font-size: .68rem;
+      font-weight: 400;
+      opacity: .82;
+      letter-spacing: .04em;
+      display: block;
+    }
+
+    .btn-store {
+      font-size: 1.05rem;
+      font-weight: 700;
+      display: block;
+      letter-spacing: -.01em;
+    }
 
     .auto-badge {
       display: none;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      background: rgba(41,68,155,.08);
-      border: 1px dashed rgba(41,68,155,.28);
+      background: rgba(41, 68, 155, .08);
+      border: 1px dashed rgba(41, 68, 155, .28);
       border-radius: 12px;
       padding: .7rem 1rem;
       font-size: .8rem;
@@ -243,8 +326,21 @@
       font-weight: 600;
       margin-bottom: .85rem;
     }
-    .auto-badge.show { display: flex; animation: fadeIn .4s ease; }
-    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+    .auto-badge.show {
+      display: flex;
+      animation: fadeIn .4s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
 
     .countdown {
       font-family: 'Nunito', sans-serif;
@@ -252,9 +348,12 @@
       font-size: 1.1rem;
       background: var(--primary);
       color: #fff;
-      width: 28px; height: 28px;
+      width: 28px;
+      height: 28px;
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       flex-shrink: 0;
     }
 
@@ -269,8 +368,16 @@
       color: var(--text-muted);
       line-height: 1.6;
     }
-    .footer a { color: var(--primary); text-decoration: none; font-weight: 600; }
-    .footer a:hover { text-decoration: underline; }
+
+    .footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
 
     .security-line {
       display: flex;
@@ -290,190 +397,267 @@
       filter: blur(50px);
       opacity: .18;
     }
-    .f1 { width:340px; height:340px; background:var(--primary); top:-120px; left:-100px; animation: drift1 12s ease-in-out infinite alternate; }
-    .f2 { width:260px; height:260px; background:var(--accent);  bottom:-80px; right:-80px; animation: drift2 14s ease-in-out infinite alternate; }
-    .f3 { width:180px; height:180px; background:#7BA7FF; top:50%; left:70%; animation: drift1 10s 2s ease-in-out infinite alternate; }
 
-    @keyframes drift1 { to { transform: translate(30px, 20px); } }
-    @keyframes drift2 { to { transform: translate(-25px, -18px); } }
+    .f1 {
+      width: 340px;
+      height: 340px;
+      background: var(--primary);
+      top: -120px;
+      left: -100px;
+      animation: drift1 12s ease-in-out infinite alternate;
+    }
+
+    .f2 {
+      width: 260px;
+      height: 260px;
+      background: var(--accent);
+      bottom: -80px;
+      right: -80px;
+      animation: drift2 14s ease-in-out infinite alternate;
+    }
+
+    .f3 {
+      width: 180px;
+      height: 180px;
+      background: #7BA7FF;
+      top: 50%;
+      left: 70%;
+      animation: drift1 10s 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift1 {
+      to {
+        transform: translate(30px, 20px);
+      }
+    }
+
+    @keyframes drift2 {
+      to {
+        transform: translate(-25px, -18px);
+      }
+    }
 
     @media (max-width: 480px) {
-      .card { padding: 2rem 1.25rem 1.5rem; }
-      .app-name { font-size: 1.5rem; }
+      .card {
+        padding: 2rem 1.25rem 1.5rem;
+      }
+
+      .app-name {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<div class="floater f1"></div>
-<div class="floater f2"></div>
-<div class="floater f3"></div>
+  <div class="floater f1"></div>
+  <div class="floater f2"></div>
+  <div class="floater f3"></div>
 
-<main class="page">
-  <div class="card">
+  <main class="page">
+    <div class="card">
 
-    <!-- App Icon -->
-    <div class="icon-wrap">
-      <img src="ikon.jpg" alt="Ehliyet Mobil" />
-    </div>
-
-    <!-- Badge -->
-    <div class="badge"><span class="badge-dot"></span> Resmi Uygulama</div>
-
-    <!-- Heading -->
-    <h1 class="app-name">Ehliyet Mobil</h1>
-    <p class="tagline">Ehliyet sınavına hazırlanmanın en akıllı yolu.<br>Binlerce soru, detaylı analizler ve daha fazlası.</p>
-
-    <div class="divider"></div>
-
-    <!-- Trust pills -->
-    <div class="trust-row">
-      <div class="trust-pill">
-        <svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5L2.5 3.5v4c0 3.04 2.28 5.88 5.5 6.5 3.22-.62 5.5-3.46 5.5-6.5v-4L8 1.5z" fill="currentColor" opacity=".15"/><path d="M8 1.5L2.5 3.5v4c0 3.04 2.28 5.88 5.5 6.5 3.22-.62 5.5-3.46 5.5-6.5v-4L8 1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-        Güvenli İndirme
-      </div>
-      <div class="trust-pill">
-        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.1l-3.52 1.74.67-3.92L2.3 5.14l3.94-.57L8 1z"/></svg>
-        4.8 Puan
-      </div>
-      <div class="trust-pill">
-        <svg viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M3 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        500K+ İndirme
-      </div>
-    </div>
-
-    <!-- Store Buttons -->
-    <div class="store-section">
-
-      <div class="auto-badge" id="autoBadge">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M8 5v3.5l2 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-        <span id="autoText">Mağazaya yönlendiriliyorsunuz</span>
-        <div class="countdown" id="countdown">3</div>
+      <!-- App Icon -->
+      <div class="icon-wrap">
+        <img src="ikon.jpg" alt="Ehliyet Mobil" />
       </div>
 
-      <!-- Google Play -->
-      <a href="#" class="store-btn btn-android" id="btnAndroid" aria-label="Google Play'den indir">
-        <svg class="btn-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 3.54a2.1 2.1 0 00-.95 1.77v25.38c0 .72.36 1.37.95 1.77l.1.09 14.22-14.22v-.33L6.1 3.45 6 3.54z" fill="url(#gp1)"/>
-          <path d="M25.07 22.45l-4.74-4.74v-.33l4.74-4.74.11.06 5.62 3.19c1.6.91 1.6 2.4 0 3.31l-5.62 3.19-.11.06z" fill="url(#gp2)"/>
-          <path d="M25.18 22.39L20.33 17.5 6 31.83a1.86 1.86 0 002.39.07l16.79-9.51z" fill="url(#gp3)"/>
-          <path d="M25.18 12.61L8.39 3.1A1.86 1.86 0 006 3.17L20.33 17.5l4.85-4.89z" fill="url(#gp4)"/>
-          <defs>
-            <linearGradient id="gp1" x1="19.28" y1="4.58" x2="1.89" y2="18" gradientUnits="userSpaceOnUse"><stop stop-color="#00A0FF"/><stop offset="1" stop-color="#00C6FF"/></linearGradient>
-            <linearGradient id="gp2" x1="32.09" y1="17.5" x2="19.32" y2="17.5" gradientUnits="userSpaceOnUse"><stop stop-color="#FFD600"/><stop offset="1" stop-color="#FFBC00"/></linearGradient>
-            <linearGradient id="gp3" x1="22.26" y1="19.69" x2="5.07" y2="34.82" gradientUnits="userSpaceOnUse"><stop stop-color="#FF3A44"/><stop offset="1" stop-color="#C31162"/></linearGradient>
-            <linearGradient id="gp4" x1="4.69" y1="0.64" x2="12.19" y2="10.16" gradientUnits="userSpaceOnUse"><stop stop-color="#32A071"/><stop offset="1" stop-color="#2DA771"/></linearGradient>
-          </defs>
-        </svg>
-        <div class="btn-text">
-          <span class="btn-label">Google Play'den İndir</span>
-          <span class="btn-store">Google Play</span>
+      <!-- Badge -->
+      <div class="badge"><span class="badge-dot"></span> Resmi Uygulama</div>
+
+      <!-- Heading -->
+      <h1 class="app-name">Ehliyet Mobil</h1>
+      <p class="tagline">Ehliyet sınavına hazırlanmanın en akıllı yolu.<br>Binlerce soru, detaylı analizler ve daha
+        fazlası.</p>
+
+      <div class="divider"></div>
+
+      <!-- Trust pills -->
+      <div class="trust-row">
+        <div class="trust-pill">
+          <svg viewBox="0 0 16 16" fill="none">
+            <path d="M8 1.5L2.5 3.5v4c0 3.04 2.28 5.88 5.5 6.5 3.22-.62 5.5-3.46 5.5-6.5v-4L8 1.5z" fill="currentColor"
+              opacity=".15" />
+            <path d="M8 1.5L2.5 3.5v4c0 3.04 2.28 5.88 5.5 6.5 3.22-.62 5.5-3.46 5.5-6.5v-4L8 1.5z"
+              stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" />
+          </svg>
+          Güvenli İndirme
         </div>
-      </a>
-
-      <!-- App Store -->
-      <a href="#" class="store-btn btn-ios" id="btnIos" aria-label="App Store'dan indir">
-        <svg class="btn-icon" viewBox="0 0 36 36" fill="white" xmlns="http://www.w3.org/2000/svg">
-          <path d="M23.28 4c.3 2.1-.6 4.12-1.83 5.59-1.23 1.46-3.18 2.58-5.08 2.43-.34-2.02.68-4.1 1.85-5.44C19.47 5.12 21.56 4.07 23.28 4zm6.46 22.17c.85-1.48 1.26-2.22 1.99-3.89-5.22-1.98-6.06-9.4-.92-12.21-1.53-1.9-3.7-3.03-5.73-3.03-1.47 0-2.49.4-3.4.76-.74.29-1.39.54-2.13.54-.8 0-1.56-.27-2.38-.56-.93-.33-1.96-.7-3.2-.7-2.32 0-4.8 1.42-6.35 3.84-2.22 3.47-1.83 9.95 1.6 15.49 1.17 1.9 2.75 4.03 4.8 4.06 1.01.02 1.67-.3 2.4-.64.84-.38 1.76-.8 3.13-.8 1.38 0 2.26.41 3.08.79.72.33 1.38.64 2.36.62 2.07-.03 3.74-2.4 4.75-4.27z"/>
-        </svg>
-        <div class="btn-text">
-          <span class="btn-label">App Store'dan İndir</span>
-          <span class="btn-store">App Store</span>
+        <div class="trust-pill">
+          <svg viewBox="0 0 16 16" fill="currentColor">
+            <path d="M8 1l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.1l-3.52 1.74.67-3.92L2.3 5.14l3.94-.57L8 1z" />
+          </svg>
+          4.8 Puan
         </div>
-      </a>
-    </div>
-
-    <!-- Footer -->
-    <div class="footer">
-      <div>Mağazaya yönlendirilemiyor musunuz?
-        <a href="#" id="manualLink">Manuel indirme</a> linkine tıklayın.
+        <div class="trust-pill">
+          <svg viewBox="0 0 16 16" fill="none">
+            <path d="M8 2v8M5 7l3 3 3-3M3 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+          500K+ İndirme
+        </div>
       </div>
-      <div class="security-line">
-        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="2" y="5.5" width="9" height="6.5" rx="1.5" stroke="#34A853" stroke-width="1.2"/><path d="M4 5.5V4a2.5 2.5 0 015 0v1.5" stroke="#34A853" stroke-width="1.2" stroke-linecap="round"/></svg>
-        SSL ile korunan bağlantı · Güvenli yönlendirme
+
+      <!-- Store Buttons -->
+      <div class="store-section">
+
+        <div class="auto-badge" id="autoBadge">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0">
+            <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4" />
+            <path d="M8 5v3.5l2 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" />
+          </svg>
+          <span id="autoText">Mağazaya yönlendiriliyorsunuz</span>
+          <div class="countdown" id="countdown">3</div>
+        </div>
+
+        <!-- Google Play -->
+        <a href="#" class="store-btn btn-android" id="btnAndroid" aria-label="Google Play'den indir">
+          <svg class="btn-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 3.54a2.1 2.1 0 00-.95 1.77v25.38c0 .72.36 1.37.95 1.77l.1.09 14.22-14.22v-.33L6.1 3.45 6 3.54z"
+              fill="url(#gp1)" />
+            <path d="M25.07 22.45l-4.74-4.74v-.33l4.74-4.74.11.06 5.62 3.19c1.6.91 1.6 2.4 0 3.31l-5.62 3.19-.11.06z"
+              fill="url(#gp2)" />
+            <path d="M25.18 22.39L20.33 17.5 6 31.83a1.86 1.86 0 002.39.07l16.79-9.51z" fill="url(#gp3)" />
+            <path d="M25.18 12.61L8.39 3.1A1.86 1.86 0 006 3.17L20.33 17.5l4.85-4.89z" fill="url(#gp4)" />
+            <defs>
+              <linearGradient id="gp1" x1="19.28" y1="4.58" x2="1.89" y2="18" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#00A0FF" />
+                <stop offset="1" stop-color="#00C6FF" />
+              </linearGradient>
+              <linearGradient id="gp2" x1="32.09" y1="17.5" x2="19.32" y2="17.5" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FFD600" />
+                <stop offset="1" stop-color="#FFBC00" />
+              </linearGradient>
+              <linearGradient id="gp3" x1="22.26" y1="19.69" x2="5.07" y2="34.82" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#FF3A44" />
+                <stop offset="1" stop-color="#C31162" />
+              </linearGradient>
+              <linearGradient id="gp4" x1="4.69" y1="0.64" x2="12.19" y2="10.16" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#32A071" />
+                <stop offset="1" stop-color="#2DA771" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="btn-text">
+            <span class="btn-label">Google Play'den İndir</span>
+            <span class="btn-store">Google Play</span>
+          </div>
+        </a>
+
+        <!-- App Store -->
+        <a href="#" class="store-btn btn-ios" id="btnIos" aria-label="App Store'dan indir">
+          <svg class="btn-icon" viewBox="0 0 36 36" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M23.28 4c.3 2.1-.6 4.12-1.83 5.59-1.23 1.46-3.18 2.58-5.08 2.43-.34-2.02.68-4.1 1.85-5.44C19.47 5.12 21.56 4.07 23.28 4zm6.46 22.17c.85-1.48 1.26-2.22 1.99-3.89-5.22-1.98-6.06-9.4-.92-12.21-1.53-1.9-3.7-3.03-5.73-3.03-1.47 0-2.49.4-3.4.76-.74.29-1.39.54-2.13.54-.8 0-1.56-.27-2.38-.56-.93-.33-1.96-.7-3.2-.7-2.32 0-4.8 1.42-6.35 3.84-2.22 3.47-1.83 9.95 1.6 15.49 1.17 1.9 2.75 4.03 4.8 4.06 1.01.02 1.67-.3 2.4-.64.84-.38 1.76-.8 3.13-.8 1.38 0 2.26.41 3.08.79.72.33 1.38.64 2.36.62 2.07-.03 3.74-2.4 4.75-4.27z" />
+          </svg>
+          <div class="btn-text">
+            <span class="btn-label">App Store'dan İndir</span>
+            <span class="btn-store">App Store</span>
+          </div>
+        </a>
       </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <div>Mağazaya yönlendirilemiyor musunuz?
+          <a href="#" id="manualLink">Manuel indirme</a> linkine tıklayın.
+        </div>
+        <div class="security-line">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+            <rect x="2" y="5.5" width="9" height="6.5" rx="1.5" stroke="#34A853" stroke-width="1.2" />
+            <path d="M4 5.5V4a2.5 2.5 0 015 0v1.5" stroke="#34A853" stroke-width="1.2" stroke-linecap="round" />
+          </svg>
+          SSL ile korunan bağlantı · Güvenli yönlendirme
+        </div>
+      </div>
+
     </div>
+  </main>
 
-  </div>
-</main>
+  <script>
+    (function () {
 
-<script>
-(function () {
+      var PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.volkantastemir.ehliyetmobil';
+      var APP_STORE_URL = 'https://apps.apple.com/app/id6759098085';
+      var PLAY_INTENT = 'intent://play.google.com/store/apps/details?id=com.volkantastemir.ehliyetmobil#Intent;scheme=https;package=com.android.vending;end';
+      var APP_STORE_DEEP = 'itms-apps://apps.apple.com/app/id6759098085';
 
-  var PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.volkantastemir.ehliyetmobil';
-  var APP_STORE_URL  = 'https://apps.apple.com/app/id6759098085';
-  var PLAY_INTENT    = 'intent://play.google.com/store/apps/details?id=com.volkantastemir.ehliyetmobil#Intent;scheme=https;package=com.android.vending;end';
-  var APP_STORE_DEEP = 'itms-apps://apps.apple.com/app/id6759098085';
+      var ua = navigator.userAgent || '';
+      var isAndroid = /android/i.test(ua);
+      var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      var isTikTok = /musical_ly|TikTok|BytedanceWebview|ByteLocale/i.test(ua);
+      var isFacebook = /FBAN|FBAV/i.test(ua);
 
-  var ua         = navigator.userAgent || '';
-  var isAndroid  = /android/i.test(ua);
-  var isIOS      = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  var isTikTok   = /musical_ly|TikTok|BytedanceWebview|ByteLocale/i.test(ua);
-  var isFacebook = /FBAN|FBAV/i.test(ua);
+      var btnAndroid = document.getElementById('btnAndroid');
+      var btnIos = document.getElementById('btnIos');
+      var autoBadge = document.getElementById('autoBadge');
+      var autoText = document.getElementById('autoText');
+      var countdownEl = document.getElementById('countdown');
+      var manualLink = document.getElementById('manualLink');
 
-  var btnAndroid  = document.getElementById('btnAndroid');
-  var btnIos      = document.getElementById('btnIos');
-  var autoBadge   = document.getElementById('autoBadge');
-  var autoText    = document.getElementById('autoText');
-  var countdownEl = document.getElementById('countdown');
-  var manualLink  = document.getElementById('manualLink');
+      // Her buton kendi mağazasına gider, cihaza göre override YOK
+      btnAndroid.href = (isTikTok || isFacebook) ? PLAY_INTENT : PLAY_STORE_URL;
+      btnIos.href = (isTikTok || isFacebook) ? APP_STORE_DEEP : APP_STORE_URL;
 
-  // Her buton kendi mağazasına gider, cihaza göre override YOK
-  btnAndroid.href = (isTikTok || isFacebook) ? PLAY_INTENT    : PLAY_STORE_URL;
-  btnIos.href     = (isTikTok || isFacebook) ? APP_STORE_DEEP : APP_STORE_URL;
+      // ── TikTok: dış tarayıcı uyarısı göster, otomatik yönlendirme yapma ──
+      if (isTikTok) {
+        autoBadge.classList.add('show');
+        autoBadge.style.background = 'rgba(255,180,0,.12)';
+        autoBadge.style.borderColor = 'rgba(255,160,0,.35)';
+        autoBadge.style.color = '#8a5e00';
+        countdownEl.style.display = 'none';
+        autoText.innerHTML = isIOS
+          ? '⚠️ Sağ üst köşedeki <strong>"..."</strong> işaretine dokunun, ardından açılan menüde "Tarayıcıda Aç" butonuna tıklayın.'
+          : '⚠️ Sağ üst köşedeki <strong>"..."</strong> işaretine dokunun, ardından açılan menüde "Tarayıcıda Aç" butonuna tıklayın.';
+        manualLink.href = isIOS ? APP_STORE_URL : PLAY_STORE_URL;
 
-  // ── TikTok: dış tarayıcı uyarısı göster, otomatik yönlendirme yapma ──
-  if (isTikTok) {
-    autoBadge.classList.add('show');
-    autoBadge.style.background  = 'rgba(255,180,0,.12)';
-    autoBadge.style.borderColor = 'rgba(255,160,0,.35)';
-    autoBadge.style.color       = '#8a5e00';
-    countdownEl.style.display   = 'none';
-    autoText.innerHTML = isIOS
-      ? '⚠️ Sağ üst köşedeki <strong>"..."</strong> işaretine dokunun, ardından açılan menüde "Tarayıcıda Aç" butonuna tıklayın.'
-      : '⚠️ Sağ üstteki <strong>⋮ menüsünden</strong> "Tarayıcıda Aç" seçeneğine dokunun.';
-    manualLink.href = isIOS ? APP_STORE_URL : PLAY_STORE_URL;
-    return;
-  }
-
-  // ── Normal otomatik yönlendirme (Instagram dahil) ──
-  var targetUrl  = null;
-  var targetName = '';
-
-  if (isAndroid) {
-    targetUrl  = PLAY_STORE_URL;
-    targetName = 'Google Play';
-    btnAndroid.classList.add('detected');
-    manualLink.href = PLAY_STORE_URL;
-  } else if (isIOS) {
-    targetUrl  = APP_STORE_URL;
-    targetName = 'App Store';
-    btnIos.classList.add('detected');
-    manualLink.href = APP_STORE_URL;
-  } else {
-    manualLink.href = PLAY_STORE_URL;
-  }
-
-  if (targetUrl) {
-    autoBadge.classList.add('show');
-    autoText.textContent = targetName + "'e yönlendiriliyorsunuz";
-
-    var secs = 3;
-    var tick = setInterval(function () {
-      secs--;
-      countdownEl.textContent = secs;
-      if (secs <= 0) {
-        clearInterval(tick);
-        window.location.href = targetUrl;
+        // TikTok in-app browser'ında butonlar ve footer çalışmadığı için gizle
+        btnAndroid.style.display = 'none';
+        btnIos.style.display = 'none';
+        document.querySelector('.footer').style.display = 'none';
+        return;
       }
-    }, 1000);
 
-    [btnAndroid, btnIos].forEach(function (btn) {
-      btn.addEventListener('click', function () { clearInterval(tick); });
-    });
-  }
+      // ── Normal otomatik yönlendirme (Instagram dahil) ──
+      var targetUrl = null;
+      var targetName = '';
 
-}());
-</script>
+      if (isAndroid) {
+        targetUrl = PLAY_STORE_URL;
+        targetName = 'Google Play';
+        btnAndroid.classList.add('detected');
+        manualLink.href = PLAY_STORE_URL;
+      } else if (isIOS) {
+        targetUrl = APP_STORE_URL;
+        targetName = 'App Store';
+        btnIos.classList.add('detected');
+        manualLink.href = APP_STORE_URL;
+      } else {
+        manualLink.href = PLAY_STORE_URL;
+      }
+
+      if (targetUrl) {
+        autoBadge.classList.add('show');
+        autoText.textContent = targetName + "'e yönlendiriliyorsunuz";
+
+        var secs = 3;
+        var tick = setInterval(function () {
+          secs--;
+          countdownEl.textContent = secs;
+          if (secs <= 0) {
+            clearInterval(tick);
+            window.location.href = targetUrl;
+          }
+        }, 1000);
+
+        [btnAndroid, btnIos].forEach(function (btn) {
+          btn.addEventListener('click', function () { clearInterval(tick); });
+        });
+      }
+
+    }());
+  </script>
 </body>
+
 </html>
