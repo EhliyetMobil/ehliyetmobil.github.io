@@ -34,7 +34,6 @@
       overflow-x: hidden;
     }
 
-    /* ── BACKGROUND MESH ── */
     body::before {
       content: '';
       position: fixed;
@@ -47,7 +46,6 @@
       z-index: -2;
     }
 
-    /* subtle grid */
     body::after {
       content: '';
       position: fixed;
@@ -58,7 +56,6 @@
       z-index: -1;
     }
 
-    /* ── LAYOUT ── */
     .page {
       min-height: 100dvh;
       display: flex;
@@ -69,7 +66,6 @@
       gap: 0;
     }
 
-    /* ── CARD ── */
     .card {
       width: 100%;
       max-width: 440px;
@@ -89,7 +85,6 @@
       to   { opacity: 1; transform: translateY(0); }
     }
 
-    /* ── APP ICON ── */
     .icon-wrap {
       width: 96px;
       height: 96px;
@@ -101,6 +96,7 @@
       justify-content: center;
       margin: 0 auto 1.25rem;
       animation: popIn .5s .2s cubic-bezier(.34,1.56,.64,1) both;
+      overflow: hidden;
     }
 
     @keyframes popIn {
@@ -108,10 +104,8 @@
       to   { opacity: 1; transform: scale(1); }
     }
 
-    /* steering-wheel SVG icon */
-    .icon-wrap svg { width: 56px; height: 56px; }
+    .icon-wrap img { width: 96px; height: 96px; border-radius: 22px; object-fit: cover; display: block; }
 
-    /* ── BADGE ── */
     .badge {
       display: inline-flex;
       align-items: center;
@@ -139,7 +133,6 @@
       50%      { opacity:.5; transform:scale(.7); }
     }
 
-    /* ── HEADINGS ── */
     .app-name {
       font-family: 'Nunito', sans-serif;
       font-size: 1.75rem;
@@ -157,7 +150,6 @@
       margin-bottom: 1.75rem;
     }
 
-    /* ── DIVIDER ── */
     .divider {
       width: 48px;
       height: 3px;
@@ -166,7 +158,6 @@
       margin: 0 auto 1.75rem;
     }
 
-    /* ── TRUST PILLS ── */
     .trust-row {
       display: flex;
       justify-content: center;
@@ -189,7 +180,6 @@
     }
     .trust-pill svg { width:14px; height:14px; flex-shrink:0; }
 
-    /* ── STORE BUTTONS ── */
     .store-section { width: 100%; }
 
     .store-btn {
@@ -239,9 +229,8 @@
     .btn-label { font-size: .68rem; font-weight: 400; opacity: .82; letter-spacing: .04em; display: block; }
     .btn-store { font-size: 1.05rem; font-weight: 700; display: block; letter-spacing: -.01em; }
 
-    /* ── AUTO-REDIRECT STATE ── */
     .auto-badge {
-      display: none; /* shown by JS */
+      display: none;
       align-items: center;
       justify-content: center;
       gap: 8px;
@@ -266,15 +255,14 @@
       width: 28px; height: 28px;
       border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
     }
 
-    /* highlight the detected store button */
     .store-btn.detected {
       outline: 2.5px solid var(--accent);
       outline-offset: 2px;
     }
 
-    /* ── FOOTER ── */
     .footer {
       margin-top: 1.5rem;
       font-size: .73rem;
@@ -293,9 +281,7 @@
       font-size: .72rem;
       color: var(--text-muted);
     }
-    .security-line svg { color: #34A853; }
 
-    /* ── FLOATING SHAPES ── */
     .floater {
       position: fixed;
       border-radius: 50%;
@@ -311,7 +297,6 @@
     @keyframes drift1 { to { transform: translate(30px, 20px); } }
     @keyframes drift2 { to { transform: translate(-25px, -18px); } }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 480px) {
       .card { padding: 2rem 1.25rem 1.5rem; }
       .app-name { font-size: 1.5rem; }
@@ -320,7 +305,6 @@
 </head>
 <body>
 
-<!-- Floating ambient blobs -->
 <div class="floater f1"></div>
 <div class="floater f2"></div>
 <div class="floater f3"></div>
@@ -330,7 +314,7 @@
 
     <!-- App Icon -->
     <div class="icon-wrap">
-      <img src="ikon.jpg" alt="Ehliyet Mobil" style="width:80px;height:80px;border-radius:16px;object-fit:cover;" />
+      <img src="ikon.jpg" alt="Ehliyet Mobil" />
     </div>
 
     <!-- Badge -->
@@ -345,17 +329,14 @@
     <!-- Trust pills -->
     <div class="trust-row">
       <div class="trust-pill">
-        <!-- shield -->
         <svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5L2.5 3.5v4c0 3.04 2.28 5.88 5.5 6.5 3.22-.62 5.5-3.46 5.5-6.5v-4L8 1.5z" fill="currentColor" opacity=".15"/><path d="M8 1.5L2.5 3.5v4c0 3.04 2.28 5.88 5.5 6.5 3.22-.62 5.5-3.46 5.5-6.5v-4L8 1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
         Güvenli İndirme
       </div>
       <div class="trust-pill">
-        <!-- star -->
         <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1l1.76 3.57 3.94.57-2.85 2.78.67 3.92L8 10.1l-3.52 1.74.67-3.92L2.3 5.14l3.94-.57L8 1z"/></svg>
         4.8 Puan
       </div>
       <div class="trust-pill">
-        <!-- download -->
         <svg viewBox="0 0 16 16" fill="none"><path d="M8 2v8M5 7l3 3 3-3M3 12h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         500K+ İndirme
       </div>
@@ -364,16 +345,14 @@
     <!-- Store Buttons -->
     <div class="store-section">
 
-      <!-- Auto-redirect notice -->
       <div class="auto-badge" id="autoBadge">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#29449B" stroke-width="1.4"/><path d="M8 5v3.5l2 1.5" stroke="#29449B" stroke-width="1.4" stroke-linecap="round"/></svg>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.4"/><path d="M8 5v3.5l2 1.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
         <span id="autoText">Mağazaya yönlendiriliyorsunuz</span>
         <div class="countdown" id="countdown">3</div>
       </div>
 
       <!-- Google Play -->
       <a href="#" class="store-btn btn-android" id="btnAndroid" aria-label="Google Play'den indir">
-        <!-- Google Play icon -->
         <svg class="btn-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M6 3.54a2.1 2.1 0 00-.95 1.77v25.38c0 .72.36 1.37.95 1.77l.1.09 14.22-14.22v-.33L6.1 3.45 6 3.54z" fill="url(#gp1)"/>
           <path d="M25.07 22.45l-4.74-4.74v-.33l4.74-4.74.11.06 5.62 3.19c1.6.91 1.6 2.4 0 3.31l-5.62 3.19-.11.06z" fill="url(#gp2)"/>
@@ -394,7 +373,6 @@
 
       <!-- App Store -->
       <a href="#" class="store-btn btn-ios" id="btnIos" aria-label="App Store'dan indir">
-        <!-- Apple icon -->
         <svg class="btn-icon" viewBox="0 0 36 36" fill="white" xmlns="http://www.w3.org/2000/svg">
           <path d="M23.28 4c.3 2.1-.6 4.12-1.83 5.59-1.23 1.46-3.18 2.58-5.08 2.43-.34-2.02.68-4.1 1.85-5.44C19.47 5.12 21.56 4.07 23.28 4zm6.46 22.17c.85-1.48 1.26-2.22 1.99-3.89-5.22-1.98-6.06-9.4-.92-12.21-1.53-1.9-3.7-3.03-5.73-3.03-1.47 0-2.49.4-3.4.76-.74.29-1.39.54-2.13.54-.8 0-1.56-.27-2.38-.56-.93-.33-1.96-.7-3.2-.7-2.32 0-4.8 1.42-6.35 3.84-2.22 3.47-1.83 9.95 1.6 15.49 1.17 1.9 2.75 4.03 4.8 4.06 1.01.02 1.67-.3 2.4-.64.84-.38 1.76-.8 3.13-.8 1.38 0 2.26.41 3.08.79.72.33 1.38.64 2.36.62 2.07-.03 3.74-2.4 4.75-4.27z"/>
         </svg>
@@ -411,55 +389,56 @@
         <a href="#" id="manualLink">Manuel indirme</a> linkine tıklayın.
       </div>
       <div class="security-line">
-        <!-- lock -->
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><rect x="2" y="5.5" width="9" height="6.5" rx="1.5" stroke="#34A853" stroke-width="1.2"/><path d="M4 5.5V4a2.5 2.5 0 015 0v1.5" stroke="#34A853" stroke-width="1.2" stroke-linecap="round"/></svg>
         SSL ile korunan bağlantı · Güvenli yönlendirme
       </div>
     </div>
 
-  </div><!-- /card -->
+  </div>
 </main>
 
 <script>
-  const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.volkantastemir.ehliyetmobil';
-  const APP_STORE_URL  = 'https://apps.apple.com/app/id6759098085';
-  const PLAY_INTENT    = 'intent://play.google.com/store/apps/details?id=com.volkantastemir.ehliyetmobil#Intent;scheme=https;package=com.android.vending;end';
-  const APP_STORE_DEEP = 'itms-apps://apps.apple.com/app/id6759098085';
+(function () {
 
-  const ua          = navigator.userAgent || '';
-  const isAndroid   = /android/i.test(ua);
-  const isIOS       = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  const isTikTok    = /musical_ly|TikTok|BytedanceWebview|ByteLocale/i.test(ua);
-  const isFacebook  = /FBAN|FBAV/i.test(ua);
+  var PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.volkantastemir.ehliyetmobil';
+  var APP_STORE_URL  = 'https://apps.apple.com/app/id6759098085';
+  var PLAY_INTENT    = 'intent://play.google.com/store/apps/details?id=com.volkantastemir.ehliyetmobil#Intent;scheme=https;package=com.android.vending;end';
+  var APP_STORE_DEEP = 'itms-apps://apps.apple.com/app/id6759098085';
 
-  const btnAndroid  = document.getElementById('btnAndroid');
-  const btnIos      = document.getElementById('btnIos');
-  const autoBadge   = document.getElementById('autoBadge');
-  const autoText    = document.getElementById('autoText');
-  const countdownEl = document.getElementById('countdown');
-  const manualLink  = document.getElementById('manualLink');
+  var ua         = navigator.userAgent || '';
+  var isAndroid  = /android/i.test(ua);
+  var isIOS      = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isTikTok   = /musical_ly|TikTok|BytedanceWebview|ByteLocale/i.test(ua);
+  var isFacebook = /FBAN|FBAV/i.test(ua);
 
-  // Butonlar her zaman kendi mağazalarına gitsin – cihaza göre override YOK
-  btnAndroid.href = (isTikTok || isFacebook) ? PLAY_INTENT : PLAY_STORE_URL;
+  var btnAndroid  = document.getElementById('btnAndroid');
+  var btnIos      = document.getElementById('btnIos');
+  var autoBadge   = document.getElementById('autoBadge');
+  var autoText    = document.getElementById('autoText');
+  var countdownEl = document.getElementById('countdown');
+  var manualLink  = document.getElementById('manualLink');
+
+  // Her buton kendi mağazasına gider, cihaza göre override YOK
+  btnAndroid.href = (isTikTok || isFacebook) ? PLAY_INTENT    : PLAY_STORE_URL;
   btnIos.href     = (isTikTok || isFacebook) ? APP_STORE_DEEP : APP_STORE_URL;
 
-  // TikTok: otomatik yönlendirme yok, dış tarayıcı uyarısı göster
+  // ── TikTok: dış tarayıcı uyarısı göster, otomatik yönlendirme yapma ──
   if (isTikTok) {
     autoBadge.classList.add('show');
-    autoBadge.style.background   = 'rgba(255,180,0,.12)';
-    autoBadge.style.borderColor  = 'rgba(255,160,0,.35)';
-    autoBadge.style.color        = '#8a5e00';
-    countdownEl.style.display    = 'none';
+    autoBadge.style.background  = 'rgba(255,180,0,.12)';
+    autoBadge.style.borderColor = 'rgba(255,160,0,.35)';
+    autoBadge.style.color       = '#8a5e00';
+    countdownEl.style.display   = 'none';
     autoText.innerHTML = isIOS
       ? '⚠️ Sağ alt köşedeki <strong>Safari\'de Aç</strong> seçeneğine dokunun, ardından butona tıklayın.'
       : '⚠️ Sağ üstteki <strong>⋮ menüsünden</strong> "Tarayıcıda Aç" seçeneğine dokunun.';
     manualLink.href = isIOS ? APP_STORE_URL : PLAY_STORE_URL;
-    return; // otomatik yönlendirme yapma.
+    return;
   }
 
-  // Normal otomatik yönlendirme
-  let targetUrl  = null;
-  let targetName = '';
+  // ── Normal otomatik yönlendirme (Instagram dahil) ──
+  var targetUrl  = null;
+  var targetName = '';
 
   if (isAndroid) {
     targetUrl  = PLAY_STORE_URL;
@@ -479,8 +458,8 @@
     autoBadge.classList.add('show');
     autoText.textContent = targetName + "'e yönlendiriliyorsunuz";
 
-    let secs = 3;
-    const tick = setInterval(() => {
+    var secs = 3;
+    var tick = setInterval(function () {
       secs--;
       countdownEl.textContent = secs;
       if (secs <= 0) {
@@ -489,10 +468,12 @@
       }
     }, 1000);
 
-    [btnAndroid, btnIos].forEach(btn => {
-      btn.addEventListener('click', () => clearInterval(tick));
+    [btnAndroid, btnIos].forEach(function (btn) {
+      btn.addEventListener('click', function () { clearInterval(tick); });
     });
   }
+
+}());
 </script>
 </body>
 </html>
